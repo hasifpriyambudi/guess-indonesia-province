@@ -22,10 +22,7 @@ while len(correctAnswer) < len(provinceList):
     answer = screen.textinput(f"{correct}/{len(provinceList)} Province Correct", "What's another Province's name?").title()
     turtle.onscreenclick(get_mouse_click_coor)
     if answer == "Exit":
-        missingProvince = []
-        for province in provinceList:
-            if province not in correctAnswer:
-                missingProvince.append(province)
+        missingProvince = [index for index in provinceList if index not in correctAnswer]
         newData = pandas.DataFrame(missingProvince)
         newData.to_csv(EXPORT)
         break
